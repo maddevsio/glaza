@@ -1,4 +1,5 @@
 .vendor/
+.idea/
 gwc.json
 gwc.p12
 organic-search-analytics-2ee3b6f08d9d.json
