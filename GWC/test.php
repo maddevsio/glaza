@@ -16,8 +16,7 @@ try{
     $request = new Google_Service_Webmasters_SearchAnalyticsQueryRequest($client);
     $request->startDate = '2017-07-01';
     $request->endDate = '2017-07-06';
-    $request->dimensions = array('query');
-    $request->rowLimit = 10;
+    $request->dimensions = array('date');
 
     $t = $service->searchanalytics->query('https://silkroadexplore.com/', $request);
     print_r($t);
