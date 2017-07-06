@@ -13,10 +13,14 @@ try{
     $t = $service->sites->get('https://silkroadexplore.com/');
     print_r($t);
 
-    $t = $service->searchanalytics->query('https://silkroadexplore.com/');
+    $request = new Google_Service_Webmasters_SearchAnalyticsQueryRequest($client);
+    $request->startDate = '2017-07-01';
+    $request->endDate = '2017-07-06';
+    $request->dimensions = array('query');
+    $request->rowLimit = 10;
+
+    $t = $service->searchanalytics->query('https://silkroadexplore.com/', $request);
     print_r($t);
-
-
 }
 catch(Google_Exception $e){
     echo $e->getMessage();
