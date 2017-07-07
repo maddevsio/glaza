@@ -1,5 +1,8 @@
 {
   "require": {
-    "bolandish/instagram-grabber":"1.0.13"
+    "bolandish/instagram-grabber":"1.0.13",
+    "vinkla/instagram":"*",
+    "php-http/message":"*",
+    "php-http/guzzle6-adapter":"*"
   }
 }
