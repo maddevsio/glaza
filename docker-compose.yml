@@ -1,0 +1,17 @@
+
+version: '2'
+services:
+  mysql:
+    ports:
+     - "3306:3306"
+    volumes:
+     - /usr/local/opt/docker-volumes/mysql:/var/lib/mysql
+    environment:
+     - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    image: "mysql:5.7"
+  pma:
+    ports:
+     - "8090:80"
+    links:
+     - "mysql:db"
+    image: "phpmyadmin/phpmyadmin"
