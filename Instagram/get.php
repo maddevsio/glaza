@@ -6,7 +6,9 @@
  * Time: 7:55 PM
  */
 
-include_once "../lib/db.php";
+set_include_path(get_include_path() . PATH_SEPARATOR . '../lib' . PATH_SEPARATOR . './lib');
+
+include_once "db.php";
 
 while (true) {
   $url = "https://www.instagram.com/hippohae/?__a=1";
