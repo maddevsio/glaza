@@ -8,7 +8,7 @@
 
 function saveLog($type, $value) {
     $status = true;
-    $mysqli = new mysqli("127.0.0.1", "root", "", "glaza");
+    $mysqli = new mysqli("mysql", "root", "", "glaza");
 
     if (mysqli_connect_errno()) {
         printf("Mysql connection error: %s\n", mysqli_connect_error());
