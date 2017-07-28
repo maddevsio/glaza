@@ -11,12 +11,36 @@ set_include_path(get_include_path() . PATH_SEPARATOR . '../lib' . PATH_SEPARATOR
 include_once "db.php";
 
 while (true) {
-  $url = "https://www.instagram.com/hippohae/?__a=1";
+  $mysqli = getDB();
+
+  $account = 'hippohae';
+  $url = "https://www.instagram.com/$account/?__a=1";
+
   $json = file_get_contents($url);
   $data = json_decode($json);
+
   print("Instagram followed_by " . $data->user->followed_by->count . "\n");
-  if (saveLog("instagram_hippohae_followed_by", strval($data->user->followed_by->count))) {
-    print("Saved\n");
+  print("Instagram follows " . $data->user->follows->count . "\n");
+  print("Instagram photos " . $data->user->media->count . "\n");
+
+  $query = "INSERT INTO instagram (account,followed_by,follows,photos) VALUES (?,?,?,?)";
+  if ($stmt = $mysqli->prepare($query)) {
+    $stmt->bind_param("siii",
+      $account,
+      $data->user->followed_by->count,
+      $data->user->follows->count,
+      $data->user->media->count
+    );
+    if (!$stmt->execute()) {
+        var_dump($stmt->error);
+    } else {
+      print("Saved\n");
+    }
+    $stmt->close();
+    $mysqli->close();
+  } else {
+    var_dump($mysqli->error);
   }
+
   sleep(60);
 }
