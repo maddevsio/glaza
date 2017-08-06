@@ -13,7 +13,13 @@ include_once "db.php";
 while (true) {
   $mysqli = getDB();
 
-  $accounts = array("silkroadexplore", "hippohae");
+  $accounts = array();
+  if (getenv('INSTAGRAM_ACCOUNTS')) {
+    $accounts = explode(',', getenv('INSTAGRAM_ACCOUNTS'));
+  } else {
+    print("No Instagram accounts\n");
+    exit;
+  }
 
   foreach ($accounts as $account) {
     $url = "https://www.instagram.com/$account/?__a=1";
