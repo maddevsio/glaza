@@ -6,6 +6,11 @@
  * Time: 7:55 PM
  */
 
+require_once __DIR__ . "/vendor/autoload.php";
+
+$client = new \MongoDB\Client("mongodb://mongodb:27017");
+$collection = $client->glaza->instagram;
+
 while (true) {
   $accounts = array();
   if (getenv('INSTAGRAM_ACCOUNTS')) {
@@ -20,7 +25,8 @@ while (true) {
 
     $json = file_get_contents($url);
     $data = json_decode($json);
-
+    $result = $collection->insertOne($data);
+    print("mongo result '{$result->getInsertedId()}'\n");    
     print("Instagram followed_by " . $data->user->followed_by->count . "\n");
     print("Instagram follows " . $data->user->follows->count . "\n");
     print("Instagram photos " . $data->user->media->count . "\n");
