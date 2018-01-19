@@ -1,4 +1,5 @@
-version: '2'
+version: '3'
+
 services:
   mysql:
     ports:
@@ -18,6 +19,17 @@ services:
     depends_on:
       - mysql
 
+  mongodb:
+    image: mongo:3.6.1
+    container_name: "mongodb"
+    environment:
+      - MONGO_DATA_DIR=/data/db
+    volumes:
+      - /usr/local/opt/docker-volumes/mongo-grab:/data/db:rw
+    ports:
+        - 27017:27017
+    command: mongod --smallfiles
+
   pma:
     ports:
      - 8090:80
@@ -25,4 +37,4 @@ services:
      - mysql:db
     image: phpmyadmin/phpmyadmin
     depends_on:
-      - mysql
+      - mysql    
