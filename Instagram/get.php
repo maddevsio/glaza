@@ -8,6 +8,12 @@
 
 require_once __DIR__ . "/vendor/autoload.php";
 
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+$logger = new \Monolog\Logger("log");
+$logger->pushHandler(new StreamHandler('php://stdout', Logger::DEBUG));
+
 $client = new \MongoDB\Client("mongodb://mongodb:27017");
 $collection = $client->glaza->instagram;
 
@@ -16,7 +22,7 @@ while (true) {
   if (getenv('INSTAGRAM_ACCOUNTS')) {
     $accounts = explode(',', getenv('INSTAGRAM_ACCOUNTS'));
   } else {
-    print("No Instagram accounts\n");
+    $logger->addError("No Instagram accounts");
     exit;
   }
 
@@ -25,11 +31,15 @@ while (true) {
 
     $json = file_get_contents($url);
     $data = json_decode($json);
+    if (json_last_error() != JSON_ERROR_NONE) {
+      $logger->addError("JSON is not valid. Skip saving...");
+      continue;
+    }
     $result = $collection->insertOne($data);
-    print("mongo result '{$result->getInsertedId()}'\n");    
-    print("Instagram followed_by " . $data->user->followed_by->count . "\n");
-    print("Instagram follows " . $data->user->follows->count . "\n");
-    print("Instagram photos " . $data->user->media->count . "\n");
+    $logger->addInfo("mongo result '{$result->getInsertedId()}");
+    $logger->addInfo("Instagram followed_by " . $data->user->followed_by->count);
+    $logger->addInfo("Instagram follows " . $data->user->follows->count);
+    $logger->addInfo("Instagram photos " . $data->user->media->count);
   }
   
   sleep(60);
