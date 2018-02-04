@@ -1,4 +1,4 @@
-package tab
+package lib
 
 import "log"
 
@@ -11,7 +11,7 @@ func NewTab() Tab {
 	return Tab{}
 }
 
-func (r *Tab) getLastRecord() string {
+func (r *Tab) GetLastRecord() string {
 	log.Print("implement last record")
 	return "col1 | col2 | col3"
 }
