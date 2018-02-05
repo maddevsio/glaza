@@ -22,3 +22,12 @@ func TestRunApi_GetTabByIndex(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, "Alexandra", sheet.Rows[1][0].Value)
 }
+
+func TestRunApi_GetTabByName(t *testing.T) {
+	api := getAPI()
+	doc, err := api.GetDocument()
+	assert.NoError(t, err)
+	sheet, err := doc.SheetByTitle("Class Data")
+	assert.NoError(t, err)
+	assert.Equal(t, "Alexandra", sheet.Rows[1][0].Value)
+}
