@@ -7,7 +7,8 @@ import (
 
 func TestSmoke(t *testing.T) {
 	tab := NewTab()
-	tab.GoogleSheetAddress = "https://drive.google.com/doc/sdfsdfsdf"
-	tab.Name = "my tab"
+	tab.SecretFile = "client_secret.json"
+	tab.SpreadsheetID = "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms"
+	tab.Name = "Class Data"
 	assert.Equal(t, "col1 | col2 | col3", tab.GetLastRecord())
 }

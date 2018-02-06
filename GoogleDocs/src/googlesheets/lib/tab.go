@@ -3,8 +3,8 @@ package lib
 import "log"
 
 type Tab struct {
-	GoogleSheetAddress string
-	Name               string
+	API
+	Name string
 }
 
 func NewTab() Tab {
