@@ -2,6 +2,7 @@ package lib
 
 import (
 	"testing"
+
 	"github.com/stretchr/testify/assert"
 )
 
@@ -14,5 +15,5 @@ func TestGetLastRecord(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Len(t, lastRecord, 6)
 	assert.Equal(t, "Will", lastRecord[0])
-	assert.Equal(t, "Debate", lastRecord[len(lastRecord) - 1])
+	assert.Equal(t, "Debate", lastRecord[len(lastRecord)-1])
 }

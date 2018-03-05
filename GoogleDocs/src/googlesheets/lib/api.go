@@ -1,14 +1,15 @@
 package lib
 
 import (
-	"gopkg.in/Iwark/spreadsheet.v2"
-	"golang.org/x/oauth2/google"
-	"io/ioutil"
 	"context"
+	"io/ioutil"
+
+	"golang.org/x/oauth2/google"
+	"gopkg.in/Iwark/spreadsheet.v2"
 )
 
 type API struct {
-	SecretFile string
+	SecretFile    string
 	SpreadsheetID string
 }
 

@@ -21,7 +21,7 @@ func (tab *Tab) GetLastRecord() ([]string, error) {
 	}
 
 	var lastRecord []string
-	lastRow := sheet.Rows[len(sheet.Rows) - 1]
+	lastRow := sheet.Rows[len(sheet.Rows)-1]
 	for _, cell := range lastRow {
 		if cell.Value != "" {
 			lastRecord = append(lastRecord, cell.Value)
