@@ -4,3 +4,4 @@ Instagram/vendor
 GWC/vendor
 .env
 .DS_Store
+.vscode/
