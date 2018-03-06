@@ -5,3 +5,4 @@ GWC/vendor
 .env
 .DS_Store
 .vscode/
+test-run.sh
