@@ -1,15 +1,6 @@
 version: '3'
 
 services:
-  instagram:
-    env_file:
-      - Instagram/.env    
-    build:
-      context: .
-      dockerfile: Instagram/Dockerfile
-    depends_on:
-      - mongodb
-
   mongodb:
     image: mongo:3.6.1
     container_name: "mongodb"

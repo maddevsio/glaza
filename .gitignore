@@ -1,8 +1,4 @@
-# Created by .ignore support plugin (hsz.mobi)
 .idea/
-Instagram/vendor
-GWC/vendor
 .env
-.DS_Store
 .vscode/
 test-run.sh
