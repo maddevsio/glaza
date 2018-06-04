@@ -13,5 +13,4 @@ func main() {
 	tab.SecretFile = os.Getenv("SECRET_FILE")
 	tab.Name = os.Getenv("TAB_NAME")
 	log.Print(tab.GetLastRecord())
-
 }

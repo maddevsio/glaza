@@ -7,7 +7,10 @@ import (
 )
 
 func TestSaveStorage(t *testing.T) {
-	s := Storage{"line", "value"}
+	s := NewStorageItem()
+	s.Name = "name"
+	s.Value = "value"
+	s.Collection = "docs"
 	err := s.Save()
 	assert.NoError(t, err)
 }
