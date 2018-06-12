@@ -19,7 +19,7 @@ type StorageItem struct {
 // NewStorageItem is s constructor func for StorageItem with host and DB default values
 func NewStorageItem() StorageItem {
 	s := StorageItem{}
-	s.Host = "localhost"
+	s.Host = "mongodb" // TODO fix this
 	s.DB = "glaza"
 	return s
 }

@@ -4,26 +4,31 @@ networks:
    backend:
 
 services:
-  restheart:
-    image: softinstigate/restheart
-    container_name: restheart
-    depends_on:
-        - mongodb
-    networks:
-        - backend
-    volumes:
-         - ./restheart:/opt/restheart/etc:ro        
-    ports:
-        - "8080:8080"
-  mongodb:
-    image: mongo:3.6.1
-    container_name: "mongodb"
-    networks:
-        - backend    
-    environment:
-      - MONGO_DATA_DIR=/data/db
-    volumes:
-      - /usr/local/opt/docker-volumes/mongo-grab:/data/db:rw
-    ports:
-        - 27017:27017
-    command: mongod --smallfiles
+    googledocs:
+        build: ./GoogleDocs
+        restart: always
+        networks:
+            - backend        
+    restheart:
+        image: softinstigate/restheart
+        container_name: restheart
+        depends_on:
+            - mongodb
+        networks:
+            - backend
+        volumes:
+                - ./restheart:/opt/restheart/etc:ro        
+        ports:
+            - "8080:8080"
+    mongodb:
+        image: mongo:3.6.1
+        container_name: "mongodb"
+        networks:
+            - backend    
+        environment:
+            - MONGO_DATA_DIR=/data/db
+        volumes:
+            - /usr/local/opt/docker-volumes/mongo-grab:/data/db:rw
+        ports:
+            - 27017:27017
+        command: mongod --smallfiles
