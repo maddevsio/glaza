@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8080/glaza/docs?pagesize=4&sort=-date")
+    fetch("http://localhost:8080/glaza/docs?pagesize=5&sort=-date")
       .then(res => res.json())
       .then(
         (result) => {

@@ -4,6 +4,14 @@ networks:
    backend:
 
 services:
+    morda:
+        build: ./morda
+        volumes:
+            - './morda:/usr/src/app'
+        ports:
+            - '3000:3000'
+        environment:
+            - NODE_ENV=development
     googledocs:
         build: ./GoogleDocs
         restart: always
