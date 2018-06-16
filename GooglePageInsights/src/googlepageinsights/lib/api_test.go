@@ -15,9 +15,9 @@ func TestRequest(t *testing.T) {
 
 	key := viper.GetString("key")
 	api := NewAPI(key)
-	json, err := api.GetPageInsights("http://showmebishkek.com", "desktop")
-
+	speed, json, err := api.GetPageInsights("http://showmebishkek.com", "desktop")
 	assert.NoError(t, err)
+	assert.Equal(t, "68", speed)
 	assert.Contains(t, json, "\"responseCode\": 200,")
 	assert.Contains(t, json, "\"id\": \"https://showmebishkek.com/\",")
 }

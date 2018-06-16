@@ -2,7 +2,10 @@ package lib
 
 import (
 	"fmt"
+	"log"
+	"strconv"
 
+	"github.com/buger/jsonparser"
 	"github.com/go-resty/resty"
 )
 
@@ -20,7 +23,8 @@ func NewAPI(key string) API {
 }
 
 // GetPageInsights makes an API call to Google PageInsights server
-func (a *API) GetPageInsights(url string, strategy string) (string, error) {
+// returns speed, json and error
+func (a *API) GetPageInsights(url string, strategy string) (string, string, error) {
 	payload := fmt.Sprintf(
 		"https://www.googleapis.com/pagespeedonline/v4/runPagespeed?url=%v&strategy=%v&key=%v",
 		url,
@@ -29,7 +33,29 @@ func (a *API) GetPageInsights(url string, strategy string) (string, error) {
 	)
 	resp, err := resty.R().Get(payload)
 	if err != nil {
-		return "", nil
+		log.Print("resty")
+		return "", "", err
 	}
-	return resp.String(), nil
+
+	respBytes := resp.Body()
+	speed, err := jsonparser.GetInt(respBytes, "ruleGroups", "SPEED", "score")
+	if err != nil {
+		log.Print("json parser")
+		return "", "", err
+	}
+
+	return strconv.Itoa(int(speed)), string(respBytes), nil
 }
+
+/*
+{
+    "captchaResult": "CAPTCHA_NOT_NEEDED",
+    "kind": "pagespeedonline#result",
+    "id": "https://showmebishkek.com/",
+    "responseCode": 200,
+    "title": "Bishkek city tours, visit Ala-Archa gorge and Burana tower",
+    "ruleGroups": {
+     "SPEED": {
+      "score": 68
+     }
+*/
