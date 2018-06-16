@@ -26,6 +26,12 @@
   version = "v1.0.0"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/puzanov/mongostorage"
+  packages = ["."]
+  revision = "924d9cae23c80d082c5f70916cc9e1c222a6b480"
+
+[[projects]]
   name = "github.com/stretchr/testify"
   packages = ["assert"]
   revision = "f35b8ab0b5a2cef36673838d662e249dd9c94686"
@@ -64,6 +70,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "31aa4c97db7690c5e2a94a972aa87983309353b192c2bef8e02a9ce2c879d1f6"
+  inputs-digest = "78e4cf5c2cf2fea536f36aaed9a72bc48661423e8b9ec856ed479669c3067e11"
   solver-name = "gps-cdcl"
   solver-version = 1

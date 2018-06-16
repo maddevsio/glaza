@@ -6,3 +6,4 @@ config.toml
 pkg
 bin
 client_secret.json
+test.json

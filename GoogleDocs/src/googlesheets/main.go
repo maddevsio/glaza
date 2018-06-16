@@ -5,6 +5,8 @@ import (
 	"log"
 	"os"
 	"strings"
+
+	"github.com/puzanov/mongostorage"
 )
 
 func main() {
@@ -18,7 +20,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	storage := lib.NewStorageItem()
+	storage := mongostorage.NewItem()
 	storage.Name = tab.Name
 	storage.Collection = "docs"
 	storage.Value = strings.Join(items, " ")
