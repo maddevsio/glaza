@@ -2,3 +2,7 @@
 .env
 .vscode/
 test-run.sh
+config.toml
+pkg
+bin
+client_secret.json
