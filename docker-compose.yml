@@ -17,6 +17,11 @@ services:
         restart: always
         networks:
             - backend        
+    googlepageinsights:
+        build: ./GooglePageInsights
+        restart: always
+        networks:
+            - backend        
     restheart:
         image: softinstigate/restheart
         container_name: restheart
