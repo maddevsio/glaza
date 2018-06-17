@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Docs from './components/docs/Docs';
+import PageInsights from './components/pageinsights/PageInsights';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Docs />, document.getElementById('docs'));
+ReactDOM.render(<PageInsights />, document.getElementById('pageinsights'));
+
 registerServiceWorker();

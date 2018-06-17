@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
 
-class App extends Component {
+class PageInsights extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +11,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8080/glaza/docs?pagesize=5&sort=-date")
+    fetch("http://localhost:8080/glaza/pageinsights?pagesize=4&sort=-date")
       .then(res => res.json())
       .then(
         (result) => {
@@ -21,9 +20,6 @@ class App extends Component {
             items: result._embedded
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         (error) => {
           this.setState({
             isLoaded: true,
@@ -35,23 +31,24 @@ class App extends Component {
 
   render() {
     const { error, isLoaded, items } = this.state;
-
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {    
       return (
-        <ul>
-          {items.map(item => (
-            <li key={item.name}>
-              {item.name} {item.value} 
-            </li>
-          ))}
-        </ul>
+        <div>
+          <ul>
+            {items.map(item => (
+              <li key={item.name}>
+                <b>{item.name}</b> <span>{item.value}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       );
     }      
   }
 }
 
-export default App;
+export default PageInsights;
