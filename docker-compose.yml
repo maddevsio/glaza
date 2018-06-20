@@ -22,6 +22,11 @@ services:
         restart: always
         networks:
             - backend        
+    googlewebmasters:
+        build: ./GoogleWebmasters
+        restart: always
+        networks:
+            - backend                    
     restheart:
         image: softinstigate/restheart
         container_name: restheart
