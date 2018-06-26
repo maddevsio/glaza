@@ -30,7 +30,7 @@ class WebmastersClicks extends Component {
   }
 
   render() {
-    const { error, isLoaded, items } = this.state;  
+    const { error, isLoaded, items } = this.state;
     return (
       <div>
         {error && <div>Error: {error.message}</div>}
@@ -38,7 +38,14 @@ class WebmastersClicks extends Component {
           <div>
             <b>{item.name} {item.value}</b>
             <table>
-            {item.json.rows.map(row => (
+              <tr>
+                <td>Clicks</td>
+                <td>CTR</td>
+                <td>Impressions</td>
+                <td>Position</td>
+                <td>Date</td>
+              </tr>
+            {item.json.rows.slice(0).reverse().map(row => (
               <tr>
                 <td>{row.clicks}</td>
                 <td>{row.ctr}</td>
