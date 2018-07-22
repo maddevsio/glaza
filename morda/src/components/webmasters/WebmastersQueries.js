@@ -38,15 +38,15 @@ class WebmastersQueries extends Component {
           <div>
             <b>{item.name} {item.value}</b>
             <table>
-            {item.json.rows.map(row => (
-              <tr>
-                <td>{row.clicks}</td>
-                <td>{row.ctr}</td>
-                <td>{row.impressions}</td>
-                <td>{row.position}</td>
-                <td>{row.keys[0]}</td>
-              </tr>
-            ))}
+              {item.json.rows && item.json.rows.map(row => (
+                <tr>
+                  <td>{row.clicks}</td>
+                  <td>{row.ctr}</td>
+                  <td>{row.impressions}</td>
+                  <td>{row.position}</td>
+                  <td>{row.keys[0]}</td>
+                </tr>
+              ))}
             </table>
           </div>
         ))}
