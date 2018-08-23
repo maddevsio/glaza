@@ -48,9 +48,9 @@ class WebmastersClicks extends Component {
             {item.json.rows.slice(0).reverse().map(row => (
               <tr>
                 <td>{row.clicks}</td>
-                <td>{row.ctr}</td>
+                <td>{Number(row.ctr.toFixed(2))}</td>
                 <td>{row.impressions}</td>
-                <td>{row.position}</td>
+                <td>{Number(row.position.toFixed(2))}</td>
                 <td>{row.keys[0]}</td>
               </tr>
             ))}
