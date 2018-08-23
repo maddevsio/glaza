@@ -48,10 +48,10 @@ class WebmastersQueries extends Component {
               {item.json.rows && item.json.rows.map(row => (
                 <tr>
                   <td>{row.clicks}</td>
-                  <td>{row.ctr}</td>
+                  <td>{Number(row.ctr.toFixed(2))}</td>
                   <td>{row.impressions}</td>
-                  <td>{row.position}</td>
-                  <td>{row.keys[0]}</td>
+                  <td>{Number(row.position.toFixed(1))}</td>
+                  <td><a href={"https://www.google.com/search?q=" + row.keys[0]}>{row.keys[0]}</a></td>
                 </tr>
               ))}
             </table>
