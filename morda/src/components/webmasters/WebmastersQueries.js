@@ -38,6 +38,13 @@ class WebmastersQueries extends Component {
           <div>
             <b>{item.name} {item.value}</b>
             <table>
+              <tr>
+                <td><b>Clicks</b></td>
+                <td><b>CTR</b></td>
+                <td><b>Imp</b></td>
+                <td><b>Pos</b></td>
+                <td><b>Query</b></td>
+              </tr>
               {item.json.rows && item.json.rows.map(row => (
                 <tr>
                   <td>{row.clicks}</td>
