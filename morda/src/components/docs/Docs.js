@@ -43,7 +43,7 @@ class Docs extends Component {
           <ul>
             {items.map(item => (
               <li key={item.name}>
-                {item.name} {item.value} 
+                {item.name} {item.value} <a href={item.json.url}>link</a>
               </li>
             ))}
           </ul>

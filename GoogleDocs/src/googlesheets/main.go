@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"googlesheets/lib"
 	"log"
 	"os"
@@ -24,6 +25,7 @@ func main() {
 	storage.Name = tab.Name
 	storage.Collection = "docs"
 	storage.Value = strings.Join(items, " ")
+	storage.JSON = fmt.Sprintf("{\"url\":\"%v\"}", os.Getenv("URL"))
 	err = storage.Save()
 	if err != nil {
 		log.Fatal(err)
