@@ -12,6 +12,11 @@ services:
             - '3000:3000'
         environment:
             - NODE_ENV=development
+    telegram:
+        build: ./Telegram
+        restart: always
+        networks:
+            - backend        
     googledocs:
         build: ./GoogleDocs
         restart: always
