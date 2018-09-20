@@ -1,0 +1,12 @@
+Morda is working if installed from the host machine.
+
+Install Node.js from the NodeSource repository
+curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+
+sudo apt install nodejs
+
+node --version
+v8.11.3
+
+npm --version
+5.6.0
