@@ -2,14 +2,29 @@ version: '3'
 
 networks:
    backend:
+   frontend:
 
 services:
+    nginx:
+        build: ./nginx
+        depends_on:
+            - morda
+            - restheart
+        ports:
+            - 8000:80
+        networks:
+            - backend
+            - frontend       
     morda:
         build: ./morda
         volumes:
             - './morda:/usr/src/app'
-        ports:
-            - '3000:3000'
+        expose:
+            - "3000"
+        # ports:
+        #     - '3000:3000'
+        networks:
+            - frontend            
         environment:
             - NODE_ENV=development
     telegram:
@@ -43,11 +58,14 @@ services:
         depends_on:
             - mongodb
         networks:
+            - frontend
             - backend
         volumes:
                 - ./restheart:/opt/restheart/etc:ro        
-        ports:
-            - "8080:8080"
+        expose:
+            - "8080"
+        # ports:
+        #     - "8080:8080"
     mongodb:
         image: mongo:3.6.1
         container_name: "mongodb"
