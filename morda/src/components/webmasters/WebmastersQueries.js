@@ -11,7 +11,7 @@ class WebmastersQueries extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8080/glaza/webmasters?pagesize=1&sort=-date&filter=%7B%22value%22%3A%20%22queries%22%7D")
+    fetch("http://api.glaza:8000/api/glaza/webmasters?pagesize=1&sort=-date&filter=%7B%22value%22%3A%20%22queries%22%7D")
       .then(res => res.json())
       .then(
         (result) => {
