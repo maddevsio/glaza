@@ -12,7 +12,7 @@ class WebmastersClicks extends Component {
   }
 
   componentDidMount() {
-    fetch("http://api.glaza:8000/api/glaza/analytics?pagesize=3&sort=-date")
+    fetch("http://api.glaza:8000/api/glaza/analytics?pagesize=4&sort=-date")
       .then(res => res.json())
       .then(
         (result) => {
