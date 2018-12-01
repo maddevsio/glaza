@@ -40,6 +40,7 @@ func (a *API) GetPageInsights(url string, strategy string) (string, string, erro
 	respBytes := resp.Body()
 	speed, err := jsonparser.GetInt(respBytes, "ruleGroups", "SPEED", "score")
 	if err != nil {
+		log.Print(resp.Status())
 		log.Print("json parser")
 		return "", "", err
 	}

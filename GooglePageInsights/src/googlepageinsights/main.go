@@ -12,6 +12,7 @@ func main() {
 	api := lib.NewAPI(os.Getenv("KEY"))
 	speed, json, err := api.GetPageInsights(os.Getenv("URL"), os.Getenv("STRATEGY"))
 	if err != nil {
+		log.Print("Error getting json from PageInsights")
 		log.Fatal(err)
 	}
 
@@ -22,6 +23,7 @@ func main() {
 	storage.JSON = json
 	err = storage.Save()
 	if err != nil {
+		log.Print("Error saving PageInsights data into MongoDB")
 		log.Fatal(err)
 	}
 }
