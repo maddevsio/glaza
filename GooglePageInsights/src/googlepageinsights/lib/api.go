@@ -42,6 +42,7 @@ func (a *API) GetPageInsights(url string, strategy string) (string, string, erro
 	if err != nil {
 		log.Print(resp.Status())
 		log.Printf(payload)
+		log.Printf("Body: %v", resp)
 		log.Print("json parser")
 		return "", "", err
 	}
