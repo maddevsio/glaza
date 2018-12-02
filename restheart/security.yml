@@ -47,7 +47,8 @@ permissions:
       predicate: path-prefix[path="/"]
 
 # Not authenticated user can only GET any resource under the /publicdb URI
-    - role: $unauthenticated
+    - role: admins 
+      #- role: $unauthenticated
       predicate: path-prefix[path="/glaza/"] and method[value="GET"]
 
 # Users with role 'users' can GET any collection or document resource (excluding dbs)
