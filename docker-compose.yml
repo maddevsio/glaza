@@ -35,21 +35,29 @@ services:
     googledocs:
         build: ./GoogleDocs
         restart: always
+        depends_on:
+            - mongodb
         networks:
             - backend        
     googlepageinsights:
         build: ./GooglePageInsights
         restart: always
+        depends_on:
+            - mongodb
         networks:
             - backend        
     googlewebmasters:
         build: ./GoogleWebmasters
         restart: always
+        depends_on:
+            - mongodb
         networks:
             - backend                    
     googleanalytics:
         build: ./GoogleAnalytics
         restart: always
+        depends_on:
+            - mongodb
         networks:
             - backend                    
     restheart:
