@@ -11,7 +11,7 @@ class PageInsights extends Component {
   }
 
   componentDidMount() {
-    fetch("http://api.glaza:8000/api/glaza/pageinsights?pagesize=4&sort=-date")
+    fetch("/api/glaza/pageinsights?pagesize=4&sort=-date")
       .then(res => res.json())
       .then(
         (result) => {

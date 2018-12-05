@@ -11,7 +11,7 @@ class Bots extends Component {
   }
 
   componentDidMount() {
-    fetch("http://api.glaza:8000/api/glaza/bots?pagesize=1&sort=-date")
+    fetch("/api/glaza/bots?pagesize=1&sort=-date")
       .then(res => res.json())
       .then(
         (result) => {
