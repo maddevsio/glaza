@@ -9,3 +9,4 @@ client_secret.json
 test.json
 .htpasswd
 security.yml
+.gitsecret/keys/random_seed
