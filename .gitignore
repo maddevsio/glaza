@@ -1,7 +1,6 @@
 .idea/
 .env
 .vscode/
-test-run.sh
 config.toml
 pkg
 bin
