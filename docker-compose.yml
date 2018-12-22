@@ -21,8 +21,6 @@ services:
             - './morda:/usr/src/app'
         expose:
             - "3000"
-        # ports:
-        #     - '3000:3000'
         networks:
             - frontend            
         environment:
@@ -30,6 +28,15 @@ services:
     telegram:
         build: ./Telegram
         restart: always
+        depends_on:
+            - mongodb
+        networks:
+            - backend        
+    instagram:
+        build: ./Instagram
+        restart: always
+        depends_on:
+            - mongodb
         networks:
             - backend        
     googledocs:
@@ -72,8 +79,6 @@ services:
                 - ./restheart:/opt/restheart/etc:ro        
         expose:
             - "8080"
-        # ports:
-        #     - "8080:8080"
     mongodb:
         image: mongo:3.6.1
         container_name: "mongodb"
@@ -83,8 +88,6 @@ services:
             - MONGO_DATA_DIR=/data/db
         volumes:
             - /usr/local/opt/docker-volumes/mongo-grab:/data/db:rw
-        # expose:
-        #     - "27017"
         ports:
             - 27017:27017
         command: mongod --smallfiles
