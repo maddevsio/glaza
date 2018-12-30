@@ -1,1 +1,2 @@
 test-run.sh filter=git-crypt diff=git-crypt
+security.yml filter=git-crypt diff=git-crypt

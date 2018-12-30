@@ -32,13 +32,6 @@ services:
         restart: always
         networks:
             - backend        
-    googledocs:
-        build: ./GoogleDocs
-        restart: always
-        depends_on:
-            - mongodb
-        networks:
-            - backend        
     googlepageinsights:
         build: ./GooglePageInsights
         restart: always
