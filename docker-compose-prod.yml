@@ -18,7 +18,7 @@ services:
     morda:
         build:
             context: ./morda
-            dockerfile: Dockerfile-alternate    
+            dockerfile: Dockerfile.prod    
         expose:
             - "3000"
         networks:
