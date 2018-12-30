@@ -29,7 +29,14 @@ services:
         build: ./Telegram
         restart: always
         networks:
-            - backend        
+            - backend   
+    instagram:
+        build: ./Instagram
+        restart: always
+        depends_on:
+            - mongodb
+        networks:
+            - backend                  
     googlepageinsights:
         build: ./GooglePageInsights
         restart: always
