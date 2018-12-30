@@ -39,7 +39,7 @@ class Bots extends Component {
       return (
         <div>
           <ul>
-            {items.map(item => (
+            {items && items.map(item => (
               <li >
                 Bot: {item.bot_name}, Status: {item.status}, Date: {(new Date(item.date.$date)).toString()}
               </li>

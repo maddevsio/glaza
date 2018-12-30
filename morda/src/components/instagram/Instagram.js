@@ -41,7 +41,7 @@ class Instagram extends Component {
       return (
         <div>
           <ul>
-            {items.map(item => (
+            {items && items.map(item => (
               <li>
                 <p>{item.username}</p>
                 <a target="blank" href={"https://instagram.com/" + item.username}><img width="150" src={item.media_urls[0]}/></a>

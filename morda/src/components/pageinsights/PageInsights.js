@@ -39,7 +39,7 @@ class PageInsights extends Component {
       return (
         <div>
           <ul>
-            {items.map(item => (
+            {items && items.map(item => (
               <li key={item.name}>
                 <b>{item.name}</b> <span>{item.value}</span>
               </li>

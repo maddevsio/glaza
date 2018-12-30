@@ -34,7 +34,7 @@ class WebmastersClicks extends Component {
     return (
       <div>
         {error && <div>Error: {error.message}</div>}
-        {items.map(item => (
+        {items && items.map(item => (
           <div>
             <b>{item.name} {item.value}</b>
             <table>

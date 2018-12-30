@@ -41,7 +41,7 @@ class Docs extends Component {
       return (
         <div>
           <ul>
-            {items.map(item => (
+            {items && items.map(item => (
               <li key={item.name}>
                 {item.name} {item.value} <a href={item.json.url}>link</a>
               </li>
